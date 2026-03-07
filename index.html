@@ -49,6 +49,22 @@
                     <i class="fa-solid fa-moon theme-icon icon-moon text-lg"></i>
                     <i class="fa-solid fa-sun theme-icon icon-sun text-lg text-brand-gold"></i>
                 </button>
+
+                <!-- Desktop Profile Trigger -->
+                <div class="hidden md:block h-6 w-[1px] bg-slate-200 dark:bg-white/10 mx-1"></div>
+                <button id="profileToggleBtnDesk"
+                    class="hidden md:flex items-center gap-2.5 p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-white/5 transition-all border border-transparent hover:border-slate-200 dark:hover:border-white/10 group relative">
+                    <div
+                        class="w-8 h-8 rounded-full bg-gradient-to-br from-brand-gold to-yellow-600 flex items-center justify-center text-white dark:text-black text-[10px] font-bold shadow-md ring-2 ring-white dark:ring-slate-900 group-hover:ring-brand-gold/30 transition-all">
+                        MF
+                    </div>
+                    <div class="flex flex-col items-start leading-none mr-1">
+                        <span class="text-xs font-bold text-slate-800 dark:text-white">Fikri</span>
+                        <span class="text-[9px] text-brand-gold font-medium uppercase tracking-tighter">Admin</span>
+                    </div>
+                    <i
+                        class="fa-solid fa-chevron-down text-[9px] text-slate-400 group-hover:text-brand-gold transition-colors"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -431,31 +447,80 @@
                 <p class="text-slate-600 dark:text-gray-300 font-medium mb-1">Direktur PT. Laksana Digital Industri</p>
                 <p class="text-brand-gold font-semibold uppercase tracking-widest text-sm mb-8">Pimpinan Perusahaan</p>
 
-                <div class="space-y-4 max-w-md mx-auto text-left">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
                     <a href="https://wa.me/6285250299626" target="_blank"
-                        class="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 hover:bg-green-500/10 hover:border-green-500/30 transition-colors group">
+                        class="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-800/30 border border-slate-200 dark:border-white/5 hover:bg-green-500/10 hover:border-green-500/30 transition-all group shadow-sm hover:shadow-md">
                         <div
-                            class="w-12 h-12 rounded-xl bg-green-500/20 text-green-600 dark:text-green-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                            class="w-11 h-11 rounded-xl bg-green-500/20 text-green-600 dark:text-green-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                             <i class="fa-brands fa-whatsapp"></i>
                         </div>
-                        <div>
-                            <p class="text-xs text-slate-500 dark:text-gray-400 font-medium">WhatsApp</p>
-                            <p class="text-sm font-bold text-slate-800 dark:text-white">0852-5029-9626</p>
+                        <div class="min-w-0">
+                            <p
+                                class="text-[10px] text-slate-500 dark:text-gray-400 font-bold uppercase tracking-wider mb-0.5">
+                                WhatsApp</p>
+                            <p class="text-sm font-bold text-slate-800 dark:text-white truncate">0852-5029-9626</p>
                         </div>
                     </a>
 
                     <a href="mailto:muhammadfikripersonal@yahoo.com"
-                        class="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 hover:bg-blue-500/10 hover:border-blue-500/30 transition-colors group">
+                        class="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-800/30 border border-slate-200 dark:border-white/5 hover:bg-blue-500/10 hover:border-blue-500/30 transition-all group shadow-sm hover:shadow-md">
                         <div
-                            class="w-12 h-12 rounded-xl bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                            class="w-11 h-11 rounded-xl bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
-                        <div>
-                            <p class="text-xs text-slate-500 dark:text-gray-400 font-medium">Email</p>
+                        <div class="min-w-0">
+                            <p
+                                class="text-[10px] text-slate-500 dark:text-gray-400 font-bold uppercase tracking-wider mb-0.5">
+                                Email</p>
                             <p class="text-sm font-bold text-slate-800 dark:text-white truncate">
                                 muhammadfikripersonal@yahoo.com</p>
                         </div>
                     </a>
+
+                    <!-- New Professional placeholders -->
+                    <div
+                        class="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-800/30 border border-slate-200 dark:border-white/5 transition-all opacity-80 cursor-default">
+                        <div
+                            class="w-11 h-11 rounded-xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div>
+                            <p
+                                class="text-[10px] text-slate-500 dark:text-gray-400 font-bold uppercase tracking-wider mb-0.5">
+                                Role Akses</p>
+                            <p class="text-sm font-bold text-slate-800 dark:text-white">Administrator Utama</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="flex items-center gap-4 p-4 rounded-2xl bg-white/50 dark:bg-slate-800/30 border border-slate-200 dark:border-white/5 transition-all opacity-80 cursor-default">
+                        <div
+                            class="w-11 h-11 rounded-xl bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-id-card"></i>
+                        </div>
+                        <div>
+                            <p
+                                class="text-[10px] text-slate-500 dark:text-gray-400 font-bold uppercase tracking-wider mb-0.5">
+                                ID Pegawai</p>
+                            <p class="text-sm font-bold text-slate-800 dark:text-white">LD-001/DIR/2026</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-8 pt-6 border-t border-slate-200 dark:border-white/5 flex flex-wrap justify-center gap-3">
+                    <button
+                        class="px-5 py-2 rounded-xl border border-slate-200 dark:border-white/10 text-xs font-bold text-slate-600 dark:text-gray-300 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
+                        <i class="fa-solid fa-gear mr-2"></i>Pengaturan Akun
+                    </button>
+                    <button
+                        class="px-5 py-2 rounded-xl bg-slate-800 dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-opacity">
+                        <i class="fa-solid fa-pen-to-square mr-2"></i>Edit Profil
+                    </button>
+                    <button id="closeProfileBtn"
+                        class="md:hidden px-5 py-2 rounded-xl bg-red-500/10 text-red-500 text-xs font-bold hover:bg-red-500/20 transition-colors">
+                        Tutup
+                    </button>
                 </div>
             </div>
         </div>

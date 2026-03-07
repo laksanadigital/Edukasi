@@ -63,6 +63,24 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// View Switching Logic (Consolidated)
+function toggleMainView(view) {
+    const profileSection = document.getElementById('profileSection');
+    const mainSection = document.querySelector('main');
+    const headerSection = document.querySelector('header');
+
+    if (view === 'profile') {
+        if (mainSection) mainSection.style.display = 'none';
+        if (headerSection) headerSection.style.display = 'none';
+        if (profileSection) profileSection.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        if (mainSection) mainSection.style.display = 'block';
+        if (headerSection) headerSection.style.display = 'block';
+        if (profileSection) profileSection.classList.add('hidden');
+    }
+}
+
 // Interaksi Mobile Bottom Nav
 document.querySelectorAll('.mobile-nav-item').forEach(item => {
     item.addEventListener('click', function (e) {
@@ -76,26 +94,41 @@ document.querySelectorAll('.mobile-nav-item').forEach(item => {
         const span = this.querySelector('span');
         if (span) span.classList.add('font-semibold');
 
-        // View Switching Logic
         const targetView = this.getAttribute('data-target');
-        const profileSection = document.getElementById('profileSection');
-        const mainSection = document.querySelector('main');
-        const headerSection = document.querySelector('header');
-
-        if (targetView === 'profile') {
-            if (mainSection) mainSection.style.display = 'none';
-            if (headerSection) headerSection.style.display = 'none';
-            if (profileSection) profileSection.classList.remove('hidden');
-        } else if (targetView === 'explore') {
-            if (mainSection) mainSection.style.display = 'block';
-            if (headerSection) headerSection.style.display = 'block';
-            if (profileSection) profileSection.classList.add('hidden');
-        }
+        toggleMainView(targetView === 'profile' ? 'profile' : 'explore');
 
         // Haptic feedback
         if (window.navigator && window.navigator.vibrate) { window.navigator.vibrate(50); }
     });
 });
+
+// Desktop Profile Toggle
+const profileToggleBtnDesk = document.getElementById('profileToggleBtnDesk');
+if (profileToggleBtnDesk) {
+    profileToggleBtnDesk.addEventListener('click', () => {
+        const profileSection = document.getElementById('profileSection');
+        const isHidden = profileSection.classList.contains('hidden');
+        toggleMainView(isHidden ? 'profile' : 'explore');
+
+        // Haptic feedback
+        if (window.navigator && window.navigator.vibrate) { window.navigator.vibrate(50); }
+    });
+}
+
+// Close Profile Button (Mobile specific)
+const closeProfileBtn = document.getElementById('closeProfileBtn');
+if (closeProfileBtn) {
+    closeProfileBtn.addEventListener('click', () => {
+        toggleMainView('explore');
+        // Reset mobile nav active state
+        document.querySelectorAll('.mobile-nav-item').forEach(nav => nav.classList.remove('active', 'font-semibold'));
+        const exploreTab = document.querySelector('.mobile-nav-item[data-target="explore"]');
+        if (exploreTab) {
+            exploreTab.classList.add('active');
+            exploreTab.querySelector('span').classList.add('font-semibold');
+        }
+    });
+}
 
 // Manajemen Tab UI Horizontal
 function setTab(category) {
