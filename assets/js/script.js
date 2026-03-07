@@ -29,6 +29,16 @@ initializeTheme();
 
 // --- FILTERING & LOGIKA UI LAINNYA ---
 let currentTab = 'semua';
+let registryData = null;
+
+// Fetch registry data once for global search
+fetch('assets/js/materials_registry.json')
+    .then(res => res.json())
+    .then(data => {
+        registryData = data;
+        filterMateri(); // Re-filter once data is loaded
+    })
+    .catch(err => console.error('Error loading registry for search:', err));
 
 // Auto Update Year
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -131,8 +141,19 @@ function filterMateri() {
         const cardCategory = card.getAttribute('data-category');
         const cardTitleInfo = card.getAttribute('data-title').toLowerCase();
 
+        // Extract folder name from href for global file search
+        const href = card.getAttribute('href') || '';
+        const folderMatch = href.match(/\.\/(.*?)\/index\.html/);
+        const folderKey = folderMatch ? folderMatch[1] : null;
+
+        let hasMatchingFile = false;
+        if (registryData && folderKey && registryData[folderKey]) {
+            const files = registryData[folderKey];
+            hasMatchingFile = files.some(f => f.name.toLowerCase().includes(searchKeyword));
+        }
+
         const matchTab = (currentTab === 'semua' || cardCategory === currentTab);
-        const matchSearch = cardTitleInfo.includes(searchKeyword);
+        const matchSearch = cardTitleInfo.includes(searchKeyword) || hasMatchingFile;
 
         if (matchTab && matchSearch) {
             card.style.display = 'block';

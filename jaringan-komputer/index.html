@@ -123,15 +123,15 @@
 
                 <div class="my-3 border-t border-slate-200 dark:border-slate-800 ml-4 mr-2"></div>
 
-                <a href="#"
+                                <a href="#"
                     class="flex items-center gap-4 px-6 py-2.5 rounded-r-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors w-full">
-                    <i class="fa-solid fa-cloud text-lg"></i> Penyimpanan (75% penuh)
+                    <i class="fa-solid fa-cloud text-lg"></i> <span id="storageText">Penyimpanan (Menghitung...)</span>
                 </a>
                 <div class="px-6 mt-1">
                     <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1">
-                        <div class="bg-blue-500 h-1 rounded-full" style="width: 75%"></div>
+                        <div id="storageBar" class="bg-blue-500 h-1 rounded-full transition-all duration-1000" style="width: 0%"></div>
                     </div>
-                    <p class="text-xs text-slate-500 mt-1.5 ml-1">11.2 GB dari 15 GB terpakai</p>
+                    <p id="storageDetails" class="text-xs text-slate-500 mt-1.5 ml-1">Memuat data repositori...</p>
                 </div>
             </nav>
         </aside>

@@ -85,7 +85,6 @@ async function fetchFiles() {
     errorState.classList.add('hidden');
     errorState.classList.remove('flex');
     fileGrid.classList.add('hidden');
-    fileGrid.classList.remove('flex', 'md:grid');
     fileGrid.innerHTML = '';
 
     try {
@@ -146,46 +145,36 @@ async function fetchFiles() {
             const downloadUrl = "../" + file.path;
 
             card.innerHTML = `
-                    <!-- Desktop View (Google Drive File Style) -->
-                    <a href="${viewUrl}" target="_blank" class="hidden md:flex flex-col bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden drive-item transition-all hover:shadow-md cursor-pointer relative h-56 w-full">
-                        <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-100 dark:border-slate-700/50">
-                            <i class="fa-solid ${iconClass} text-lg shrink-0"></i>
-                            <span class="font-medium text-[13px] text-slate-700 dark:text-slate-200 truncate pr-2 select-none" title="${file.name}">${file.name}</span>
+                    <!-- Desktop View (List Row) -->
+                    <a href="${downloadUrl}" download="${file.name}" class="hidden md:flex items-center justify-between p-3 hover:bg-slate-50 dark:hover:bg-slate-800/50 border-b border-slate-100 dark:border-slate-800 transition-colors w-full group">
+                        <div class="flex items-center gap-4 w-[40%] min-w-0">
+                            <i class="fa-solid ${iconClass} text-xl shrink-0 w-8 text-center text-opacity-80 group-hover:text-opacity-100 transition-opacity"></i>
+                            <span class="font-medium text-sm text-slate-700 dark:text-slate-200 truncate pr-4" title="${file.name}">${file.name}</span>
                         </div>
-                        
-                        <!-- Thumbnail Area -->
-                        <div class="flex-1 bg-slate-50 dark:bg-slate-900/50 flex flex-col items-center justify-center p-4 relative overflow-hidden group-hover:bg-slate-100 dark:group-hover:bg-slate-900/80 transition-colors">
-                            <i class="fa-solid ${iconClass} text-5xl opacity-40 group-hover:scale-110 transition-transform duration-300"></i>
-                            <!-- Overlay options on hover -->
-                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-3 transition-opacity">
-                                <span class="w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center backdrop-blur-sm hover:bg-white text-lg"><i class="fa-solid fa-eye text-slate-800 hidden group-hover/btn:block"></i><i class="fa-solid fa-eye group-hover/btn:hidden"></i></span>
-                                <span class="w-10 h-10 rounded-full bg-white/20 text-white flex items-center justify-center backdrop-blur-sm hover:bg-white text-lg"><i class="fa-solid fa-download text-slate-800 hidden group-hover/btn:block"></i><i class="fa-solid fa-download group-hover/btn:hidden"></i></span>
-                            </div>
+                        <div class="flex items-center gap-6 text-sm text-slate-500 dark:text-slate-400 w-[60%] justify-between">
+                            <span class="truncate hidden lg:block flex-1" title="PT. Laksana Digital Industri">PT. Laksana Digital Industri</span>
+                            <span class="w-28 shrink-0">${genericDate}</span>
+                            <span class="w-20 shrink-0 text-right font-medium">${fileSize}</span>
                         </div>
                     </a>
 
-                    <!-- Mobile View (Learning App Lesson Card) -->
+                    <!-- Mobile View -->
                     <div class="md:hidden flex flex-col p-4 bg-white dark:bg-slate-800 rounded-[1.25rem] border border-slate-100 dark:border-slate-700/50 shadow-sm w-full">
                         <div class="flex items-center active:scale-[0.98] transition-transform mb-3">
                             <div class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${bgColor}">
                                 <i class="fa-solid ${iconClass} text-[22px]"></i>
                             </div>
                             <div class="ml-4 flex-1 min-w-0 pr-2">
-                                <h4 class="font-bold text-slate-800 dark:text-white text-sm truncate leading-tight mb-1">${fileNameClean}</h4>
+                                <h4 class="font-bold text-slate-800 dark:text-white text-sm leading-snug mb-1 line-clamp-2">${fileNameClean}</h4>
                                 <div class="flex items-center gap-3 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-                                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-folder-open opacity-70"></i> ${fileSize}</span>
-                                    <span class="w-1 h-1 bg-slate-300 dark:bg-slate-600 rounded-full"></span>
-                                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-clock opacity-70"></i> Modul Terbuka</span>
+                                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar-days opacity-70"></i> ${genericDate}</span>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="flex items-center gap-2 mt-1">
-                            <a href="${viewUrl}" target="_blank" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-brand-gold/10 hover:bg-brand-gold/20 text-brand-gold font-bold text-xs transition-colors">
-                                <i class="fa-solid fa-eye"></i> Lihat
-                            </a>
-                            <a href="${downloadUrl}" target="_blank" download="${file.name}" class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 font-bold text-xs transition-colors">
-                                <i class="fa-solid fa-download"></i> Unduh
+                        <div class="mt-1">
+                            <a href="${downloadUrl}" target="_blank" download="${file.name}" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-brand-gold/10 hover:bg-brand-gold/20 text-brand-gold font-bold text-sm transition-colors">
+                                <i class="fa-solid fa-download"></i> Unduh File
                             </a>
                         </div>
                     </div>
@@ -196,7 +185,7 @@ async function fetchFiles() {
         loadingState.classList.add('hidden');
         loadingState.classList.remove('flex');
         fileGrid.classList.remove('hidden');
-        fileGrid.classList.add('flex', 'md:grid');
+        fileGrid.className = "flex flex-col gap-3 md:gap-0 pb-10 w-full"; // override container to be a simple vertical block
 
     } catch (error) {
         console.error(error);
@@ -218,4 +207,44 @@ async function fetchFiles() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', fetchFiles);
+async function updateStorage() {
+    const storageText = document.getElementById('storageText');
+    const storageBar = document.getElementById('storageBar');
+    const storageDetails = document.getElementById('storageDetails');
+
+    if (!storageText || !storageBar || !storageDetails) return;
+
+    try {
+        const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}`);
+        if (!response.ok) throw new Error("Gagal mengambil data repositori");
+
+        const data = await response.json();
+        const repoSizeKB = data.size; // Size in KB
+        const repoSizeMB = (repoSizeKB / 1024).toFixed(1);
+
+        // Define limit (e.g., 1000MB for Free Tier soft limit or 2000MB for safety)
+        const limitMB = 1000;
+        const percentage = Math.min((repoSizeMB / limitMB) * 100, 100).toFixed(0);
+
+        storageText.textContent = `Penyimpanan (${percentage}% penuh)`;
+        storageBar.style.width = `${percentage}%`;
+        storageDetails.textContent = `${repoSizeMB} MB dari ${limitMB} MB terpakai`;
+
+        // Change bar color if safe or critical
+        if (percentage > 90) {
+            storageBar.classList.replace('bg-blue-500', 'bg-red-500');
+        } else if (percentage > 70) {
+            storageBar.classList.replace('bg-blue-500', 'bg-orange-500');
+        }
+
+    } catch (error) {
+        console.error("Storage fetch error:", error);
+        storageText.textContent = "Penyimpanan (Data Error)";
+        storageDetails.textContent = "Gagal memuat detail penyimpanan.";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetchFiles();
+    updateStorage();
+});
