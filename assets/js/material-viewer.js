@@ -202,7 +202,17 @@ async function fetchFiles() {
         loadingState.classList.remove('flex');
         errorState.classList.remove('hidden');
         errorState.classList.add('flex');
-        document.getElementById('errorMsg').textContent = "Terjadi kesalahan koneksi internet atau API limit tercapai. Silakan coba sebentar lagi.";
+
+        let msg = "Terjadi kesalahan koneksi internet. Silakan coba sebentar lagi.";
+        if (error.message.includes('403')) {
+            msg = "Batas akses GitHub API tercapai (maksimal 60 request/jam). Mohon tunggu beberapa menit lalu muat ulang halaman.";
+        } else if (error.message.includes('404')) {
+            msg = "Folder materi tidak ditemukan (404).";
+        } else {
+            msg = error.message;
+        }
+
+        document.getElementById('errorMsg').textContent = msg;
     }
 }
 
