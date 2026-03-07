@@ -142,7 +142,7 @@ async function fetchFiles() {
 
             // For Github Pages static file host, path works for both view and download
             const viewUrl = "../" + file.path;
-            const downloadUrl = "../" + file.path;
+            const downloadUrl = `https://github.com/laksanadigital/Edukasi/blob/main/${file.path}`;
 
             card.innerHTML = `
                     <!-- Desktop View (List Row) -->
@@ -159,24 +159,19 @@ async function fetchFiles() {
                     </a>
 
                     <!-- Mobile View -->
-                    <div class="md:hidden flex flex-col p-4 bg-white dark:bg-slate-800 rounded-[1.25rem] border border-slate-100 dark:border-slate-700/50 shadow-sm w-full">
-                        <div class="flex items-center active:scale-[0.98] transition-transform mb-3">
-                            <div class="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${bgColor}">
-                                <i class="fa-solid ${iconClass} text-[22px]"></i>
-                            </div>
-                            <div class="ml-4 flex-1 min-w-0 pr-2">
-                                <h4 class="font-bold text-slate-800 dark:text-white text-sm leading-snug mb-1 line-clamp-2">${fileNameClean}</h4>
-                                <div class="flex items-center gap-3 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-                                    <span class="flex items-center gap-1.5"><i class="fa-regular fa-calendar-days opacity-70"></i> ${genericDate}</span>
-                                </div>
+                    <div class="md:hidden flex items-center p-4 bg-white dark:bg-slate-800 rounded-[1.25rem] border border-slate-100 dark:border-slate-700/50 shadow-sm w-full relative">
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${bgColor}">
+                            <i class="fa-solid ${iconClass} text-[20px]"></i>
+                        </div>
+                        <div class="ml-4 flex-1 min-w-0 pr-10">
+                            <h4 class="font-bold text-slate-800 dark:text-white text-sm leading-tight mb-1 truncate">${fileNameClean}</h4>
+                            <div class="flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400 font-medium">
+                                <span class="flex items-center gap-1"><i class="fa-regular fa-calendar-days opacity-70"></i> ${genericDate}</span>
                             </div>
                         </div>
-                        
-                        <div class="mt-1">
-                            <a href="${downloadUrl}" target="_blank" download="${file.name}" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-brand-gold/10 hover:bg-brand-gold/20 text-brand-gold font-bold text-sm transition-colors">
-                                <i class="fa-solid fa-download"></i> Unduh File
-                            </a>
-                        </div>
+                        <a href="${downloadUrl}" target="_blank" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-brand-gold/10 hover:bg-brand-gold/20 text-brand-gold flex items-center justify-center transition-colors active:scale-90 shadow-sm">
+                            <i class="fa-solid fa-download text-lg"></i>
+                        </a>
                     </div>
                 `;
             fileGrid.appendChild(card);
