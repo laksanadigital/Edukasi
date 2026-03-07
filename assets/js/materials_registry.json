@@ -1,0 +1,28 @@
+{
+  "administrasi-perkantoran": [],
+  "cloud-computing": [],
+  "database-backend": [],
+  "ethical-hacking": [],
+  "iot-mikrokontroler": [],
+  "jaringan-komputer": [],
+  "kecerdasan-buatan": [],
+  "manajemen-server": [],
+  "microsoft-office": [
+    {
+      "name": "modul pelatihan microsoft word test",
+      "size": 3529652,
+      "path": "microsoft-office/modul pelatihan microsoft word test"
+    },
+    {
+      "name": "uji coba file.pdf",
+      "size": 14,
+      "path": "microsoft-office/uji coba file.pdf"
+    },
+    {
+      "name": "uji_coba_filee.pdf",
+      "size": 14,
+      "path": "microsoft-office/uji_coba_filee.pdf"
+    }
+  ],
+  "web-development": []
+}

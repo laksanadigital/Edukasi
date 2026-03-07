@@ -89,17 +89,18 @@ async function fetchFiles() {
     fileGrid.innerHTML = '';
 
     try {
-        const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${currentFolder}?ref=${BRANCH}`;
+        const apiUrl = `../assets/js/materials_registry.json`;
         const response = await fetch(apiUrl);
 
         if (!response.ok) {
             throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
 
-        const data = await response.json();
+        const registryData = await response.json();
 
-        // Filter out index.html and README.md, keep only media/documents
-        const files = data.filter(item => item.type === 'file' && !item.name.endsWith('.html') && !item.name.toLowerCase().endsWith('readme.md'));
+        // Get files for the current folder
+        const files = registryData[currentFolder] || [];
+
 
         if (files.length === 0) {
             loadingState.classList.add('hidden');
@@ -139,9 +140,9 @@ async function fetchFiles() {
         const fileSize = formatBytes(file.size);
         const fileNameClean = file.name.replace(/\.[^/.]+$/, "");
 
-        // For GitHub API, html_url opens in browser (good for 'Lihat'), download_url directly downloads
-        const viewUrl = file.html_url;
-        const downloadUrl = file.download_url || file.html_url;
+        // For Github Pages static file host, path works for both view and download
+        const viewUrl = "../" + file.path;
+        const downloadUrl = "../" + file.path;
 
         card.innerHTML = `
                 <!-- Desktop View (Google Drive File Style) -->
