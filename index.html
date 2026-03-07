@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Portal Edukasi - PT Laksana Digital Industri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="assets/js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="antialiased relative">
+
+    <div class="glow-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:py-4 flex justify-between items-center gap-4">
+
+            <!-- Brand -->
+            <div class="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity">
+                <div
+                    class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-gold to-yellow-600 flex items-center justify-center text-white dark:text-black shadow-lg shadow-brand-gold/20 flex-shrink-0">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                </div>
+                <div class="flex flex-col nav-brand-text sm:flex">
+                    <span class="text-xl font-bold tracking-wide leading-tight text-slate-900 dark:text-white">Portal
+                        Edukasi<span class="text-brand-gold">.</span></span>
+                    <span
+                        class="text-[10px] text-slate-500 dark:text-gray-400 font-medium tracking-widest uppercase truncate max-w-[150px] sm:max-w-none">PT.
+                        Laksana Digital</span>
+                </div>
+            </div>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-3">
+                <span
+                    class="hidden sm:flex bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider items-center group cursor-default shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 mr-2 group-hover:animate-ping"></span>
+                    Materi Gratis
+                </span>
+
+                <!-- Theme Toggle Button -->
+                <button id="themeToggleBtn"
+                    class="theme-toggle shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-gold/50"
+                    aria-label="Toggle Dark/Light Mode">
+                    <i class="fa-solid fa-moon theme-icon icon-moon text-lg"></i>
+                    <i class="fa-solid fa-sun theme-icon icon-sun text-lg text-brand-gold"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="text-center header-padding sm:py-16 px-4 relative overflow-hidden">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-3xl opacity-20 dark:opacity-30 pointer-events-none">
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-brand-accent/20 to-brand-gold/30 blur-[80px] rounded-full animate-pulse-slow">
+            </div>
+        </div>
+
+        <div class="relative z-10 animate-fade-in-up">
+            <div
+                class="hidden sm:inline-block mb-4 px-4 py-1.5 rounded-full border border-slate-200 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-md">
+                <span class="text-sm font-medium text-slate-600 dark:text-gray-300"><i
+                        class="fa-solid fa-sparkles text-brand-gold mr-2"></i>Tingkatkan Karir Digital Anda</span>
+            </div>
+
+            <h1
+                class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 sm:mb-6 tracking-tight text-slate-900 dark:text-white">
+                Pusat <span class="text-gradient">Pembelajaran</span><br>Masa Depan.
+            </h1>
+
+            <p
+                class="text-sm sm:text-base md:text-xl text-slate-600 dark:text-gray-400 max-w-2xl mx-auto mb-8 sm:mb-10 font-light leading-relaxed px-2">
+                Akses semua materi, modul praktik, dan panduan teknologi. Dirancang interaktif untuk memenuhi standar
+                industri.
+            </p>
+
+            <div class="max-w-2xl mx-auto relative px-2 sm:px-0 group search-wrapper">
+                <div
+                    class="absolute -inset-1 bg-gradient-to-r from-brand-gold to-brand-accent rounded-full blur opacity-10 dark:opacity-20 group-hover:opacity-30 transition duration-1000">
+                </div>
+                <div class="relative flex items-center">
+                    <i
+                        class="fa-solid fa-search absolute left-5 sm:left-6 text-slate-400 group-focus-within:text-brand-gold transition-colors z-10"></i>
+                    <input type="text" id="searchInput" placeholder="Cari materi (misal: mikrotik, AI, excel)..."
+                        class="search-input w-full pl-12 sm:pl-14 pr-4 sm:pr-24 py-3.5 sm:py-4 rounded-full text-base sm:text-lg focus:outline-none">
+                    <div class="absolute right-3 hidden sm:flex items-center gap-1 z-10">
+                        <kbd
+                            class="px-2 py-1 bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/50 rounded text-xs text-slate-500 dark:text-brand-gold font-sans font-semibold">Ctrl
+                            + K</kbd>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-4 sm:py-8 relative z-10 animate-fade-in-up md:pb-20"
+        style="animation-delay: 0.1s;">
+
+        <!-- Filter Tabs (Horizontal Scroll on Mobile) -->
+        <div class="flex md:justify-center overflow-x-auto hide-scroll pb-2 mb-6 sm:mb-10 space-x-2 sm:space-x-3 -mx-4 px-4 md:mx-0 md:px-0"
+            id="tabContainer">
+            <button onclick="setTab('semua')"
+                class="tab-btn tab-active px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold flex-shrink-0 border border-transparent"
+                data-tab="semua">Semua</button>
+            <button onclick="setTab('perkantoran')"
+                class="tab-btn tab-inactive px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium flex-shrink-0 backdrop-blur-sm"
+                data-tab="perkantoran">Perkantoran</button>
+            <button onclick="setTab('jaringan')"
+                class="tab-btn tab-inactive px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium flex-shrink-0 backdrop-blur-sm"
+                data-tab="jaringan">Jaringan</button>
+            <button onclick="setTab('server')"
+                class="tab-btn tab-inactive px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium flex-shrink-0 backdrop-blur-sm"
+                data-tab="server">Server/Cloud</button>
+            <button onclick="setTab('programming')"
+                class="tab-btn tab-inactive px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium flex-shrink-0 backdrop-blur-sm"
+                data-tab="programming">Pemrograman</button>
+            <button onclick="setTab('keamanan')"
+                class="tab-btn tab-inactive px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium flex-shrink-0 backdrop-blur-sm"
+                data-tab="keamanan">Security</button>
+            <button onclick="setTab('ai')"
+                class="tab-btn tab-inactive px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium flex-shrink-0 backdrop-blur-sm"
+                data-tab="ai">AI</button>
+            <button onclick="setTab('iot')"
+                class="tab-btn tab-inactive px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium flex-shrink-0 backdrop-blur-sm"
+                data-tab="iot">IoT</button>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6" id="materiGrid">
+
+            <!-- Card 1: Microsoft Office -->
+            <a href="/Laksanadigital/Edukasi/microsoft-office/index.html"
+                class="materi-card group block glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden"
+                data-category="perkantoran" data-title="microsoft office word excel powerpoint dasar administrasi">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-brand-gold/20 transition-colors">
+                </div>
+                <div
+                    class="icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 text-blue-500 dark:text-blue-400">
+                    <i class="fa-brands fa-microsoft"></i>
+                </div>
+                <h3
+                    class="text-lg sm:text-xl font-bold text-slate-800 dark:text-white mb-1 sm:mb-2 group-hover:text-amber-500 dark:group-hover:text-brand-gold transition-colors block">
+                    Microsoft Office</h3>
+                <p class="text-slate-500 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 line-clamp-2">Penguasaan
+                    Word, Excel, dan PowerPoint untuk efisiensi administrasi profesional.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span
+                        class="badge-base text-[10px] sm:text-[11px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-lg text-blue-600 dark:text-blue-300">Dasar</span>
+                    <span
+                        class="text-amber-600 dark:text-brand-gold text-xs sm:text-sm font-bold flex items-center">Akses
+                        Kelas <i class="fa-solid fa-arrow-right ml-1 sm:ml-2 opacity-70 arrow-icon"></i></span>
+                </div>
+            </a>
+
+            <!-- Card 2: Administrasi Perkantoran -->
+            <a href="/Laksanadigital/Edukasi/administrasi-perkantoran/index.html"
+                class="materi-card group block glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden"
+                data-category="perkantoran" data-title="administrasi perkantoran surat menyurat arsip manajemen">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-teal-500/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-brand-gold/20 transition-colors">
+                </div>
+                <div
+                    class="icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 text-teal-500 dark:text-teal-400">
+                    <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <h3
+                    class="text-lg sm:text-xl font-bold text-slate-800 dark:text-white mb-1 sm:mb-2 group-hover:text-amber-500 dark:group-hover:text-brand-gold transition-colors block">
+                    Admin Perkantoran</h3>
+                <p class="text-slate-500 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 line-clamp-2">Manajemen
+                    operasional, tata kelola kearsipan, dan korespondensi bisnis digital modern.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span
+                        class="badge-base text-[10px] sm:text-[11px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-lg text-teal-600 dark:text-teal-300">Menengah</span>
+                    <span
+                        class="text-amber-600 dark:text-brand-gold text-xs sm:text-sm font-bold flex items-center">Akses
+                        Kelas <i class="fa-solid fa-arrow-right ml-1 sm:ml-2 opacity-70 arrow-icon"></i></span>
+                </div>
+            </a>
+
+            <!-- Card 3: Jaringan Komputer -->
+            <a href="/Laksanadigital/Edukasi/jaringan-komputer/index.html"
+                class="materi-card group block glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden"
+                data-category="jaringan" data-title="jaringan komputer cisco mikrotik routing switching lan wan">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-brand-gold/20 transition-colors">
+                </div>
+                <div
+                    class="icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 text-indigo-500 dark:text-indigo-400">
+                    <i class="fa-solid fa-network-wired"></i>
+                </div>
+                <h3
+                    class="text-lg sm:text-xl font-bold text-slate-800 dark:text-white mb-1 sm:mb-2 group-hover:text-amber-500 dark:group-hover:text-brand-gold transition-colors block">
+                    Jaringan Komputer</h3>
+                <p class="text-slate-500 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 line-clamp-2">Arsitektur
+                    jaringan, konfigurasi Mikrotik, Cisco, routing, dan manajemen LAN/WAN.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span
+                        class="badge-base text-[10px] sm:text-[11px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-lg text-indigo-600 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/20">Lanjutan</span>
+                    <span
+                        class="text-amber-600 dark:text-brand-gold text-xs sm:text-sm font-bold flex items-center">Akses
+                        Kelas <i class="fa-solid fa-arrow-right ml-1 sm:ml-2 opacity-70 arrow-icon"></i></span>
+                </div>
+            </a>
+
+            <!-- Card 4: Manajemen Server -->
+            <a href="/Laksanadigital/Edukasi/manajemen-server/index.html"
+                class="materi-card group block glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden"
+                data-category="server" data-title="manajemen server linux ubuntu debian windows server vps">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-brand-gold/20 transition-colors">
+                </div>
+                <div
+                    class="icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 text-orange-500 dark:text-orange-400">
+                    <i class="fa-solid fa-server"></i>
+                </div>
+                <h3
+                    class="text-lg sm:text-xl font-bold text-slate-800 dark:text-white mb-1 sm:mb-2 group-hover:text-amber-500 dark:group-hover:text-brand-gold transition-colors block">
+                    Manajemen Server</h3>
+                <p class="text-slate-500 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 line-clamp-2">Administrasi
+                    Linux/Windows Server, VPS, dan penerapan layanan enterprise.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span
+                        class="badge-base text-[10px] sm:text-[11px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-lg text-orange-600 dark:text-orange-300">Lanjutan</span>
+                    <span
+                        class="text-amber-600 dark:text-brand-gold text-xs sm:text-sm font-bold flex items-center">Akses
+                        Kelas <i class="fa-solid fa-arrow-right ml-1 sm:ml-2 opacity-70 arrow-icon"></i></span>
+                </div>
+            </a>
+
+            <!-- Card 5: Cloud & DevOps -->
+            <a href="/Laksanadigital/Edukasi/cloud-computing/index.html"
+                class="materi-card group block glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden"
+                data-category="server" data-title="cloud computing docker kubernetes aws devops deployment">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-brand-gold/20 transition-colors">
+                </div>
+                <div
+                    class="icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 text-cyan-500 dark:text-cyan-400">
+                    <i class="fa-solid fa-cloud"></i>
+                </div>
+                <h3
+                    class="text-lg sm:text-xl font-bold text-slate-800 dark:text-white mb-1 sm:mb-2 group-hover:text-amber-500 dark:group-hover:text-brand-gold transition-colors block">
+                    Cloud & DevOps</h3>
+                <p class="text-slate-500 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 line-clamp-2">Membangun
+                    infrastruktur skalabel dengan Docker, AWS/GCP, dan praktik DevOps CI/CD.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span
+                        class="badge-base text-[10px] sm:text-[11px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-lg text-cyan-600 dark:text-cyan-300">Expert</span>
+                    <span
+                        class="text-amber-600 dark:text-brand-gold text-xs sm:text-sm font-bold flex items-center">Akses
+                        Kelas <i class="fa-solid fa-arrow-right ml-1 sm:ml-2 opacity-70 arrow-icon"></i></span>
+                </div>
+            </a>
+
+            <!-- Card 6: Ethical Hacking -->
+            <a href="/Laksanadigital/Edukasi/ethical-hacking/index.html"
+                class="materi-card group block glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden"
+                data-category="keamanan"
+                data-title="ethical hacking cyber security keamanan siber penetration testing kalilinux">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-brand-gold/20 transition-colors">
+                </div>
+                <div
+                    class="icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 text-red-500 dark:text-red-500">
+                    <i class="fa-solid fa-user-secret"></i>
+                </div>
+                <h3
+                    class="text-lg sm:text-xl font-bold text-slate-800 dark:text-white mb-1 sm:mb-2 group-hover:text-amber-500 dark:group-hover:text-brand-gold transition-colors block">
+                    Ethical Hacking</h3>
+                <p class="text-slate-500 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 line-clamp-2">Teknik cyber
+                    security, penetration testing, dan analisis kerentanan perimeter jaringan.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span
+                        class="badge-base text-[10px] sm:text-[11px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-lg text-red-600 dark:text-red-400">Expert</span>
+                    <span
+                        class="text-amber-600 dark:text-brand-gold text-xs sm:text-sm font-bold flex items-center">Akses
+                        Kelas <i class="fa-solid fa-arrow-right ml-1 sm:ml-2 opacity-70 arrow-icon"></i></span>
+                </div>
+            </a>
+
+            <!-- Card 7: Artificial Intelligence -->
+            <a href="/Laksanadigital/Edukasi/kecerdasan-buatan/index.html"
+                class="materi-card group block glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden"
+                data-category="ai"
+                data-title="kecerdasan buatan artificial intelligence ai machine learning prompt chatgpt">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-brand-gold/20 transition-colors">
+                </div>
+                <div
+                    class="icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 text-purple-600 dark:text-purple-400">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h3
+                    class="text-lg sm:text-xl font-bold text-slate-800 dark:text-white mb-1 sm:mb-2 group-hover:text-amber-500 dark:group-hover:text-brand-gold transition-colors block">
+                    AI & Data</h3>
+                <p class="text-slate-500 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 line-clamp-2">Pemanfaatan
+                    model AI generatif, analisis data, dan teknik prompt engineering interaktif.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span
+                        class="badge-base text-[10px] sm:text-[11px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-lg text-purple-600 dark:text-purple-300">Menengah</span>
+                    <span
+                        class="text-amber-600 dark:text-brand-gold text-xs sm:text-sm font-bold flex items-center">Akses
+                        Kelas <i class="fa-solid fa-arrow-right ml-1 sm:ml-2 opacity-70 arrow-icon"></i></span>
+                </div>
+            </a>
+
+            <!-- Card 8: Web Development -->
+            <a href="/Laksanadigital/Edukasi/web-development/index.html"
+                class="materi-card group block glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden"
+                data-category="programming" data-title="web development pemrograman website html css javascript php">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-brand-gold/20 transition-colors">
+                </div>
+                <div
+                    class="icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 text-yellow-600 dark:text-yellow-400">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <h3
+                    class="text-lg sm:text-xl font-bold text-slate-800 dark:text-white mb-1 sm:mb-2 group-hover:text-amber-500 dark:group-hover:text-brand-gold transition-colors block">
+                    Web Development</h3>
+                <p class="text-slate-500 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 line-clamp-2">Membangun
+                    antarmuka website reaktif dan dinamis menggunakan HTML, CSS, JavaScript terkini.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span
+                        class="badge-base text-[10px] sm:text-[11px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-lg text-yellow-600 dark:text-yellow-300">Menengah</span>
+                    <span
+                        class="text-amber-600 dark:text-brand-gold text-xs sm:text-sm font-bold flex items-center">Akses
+                        Kelas <i class="fa-solid fa-arrow-right ml-1 sm:ml-2 opacity-70 arrow-icon"></i></span>
+                </div>
+            </a>
+
+            <!-- Card 9: Database & Backend -->
+            <a href="/Laksanadigital/Edukasi/database-backend/index.html"
+                class="materi-card group block glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden"
+                data-category="programming" data-title="database mysql backend api python nodejs pemrograman">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-brand-gold/20 transition-colors">
+                </div>
+                <div
+                    class="icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 text-emerald-600 dark:text-emerald-400">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+                <h3
+                    class="text-lg sm:text-xl font-bold text-slate-800 dark:text-white mb-1 sm:mb-2 group-hover:text-amber-500 dark:group-hover:text-brand-gold transition-colors block">
+                    Database & Backend</h3>
+                <p class="text-slate-500 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 line-clamp-2">Desain
+                    struktur database MySQL, REST API stabil, dan optimasi logika sisi backend server.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span
+                        class="badge-base text-[10px] sm:text-[11px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-lg text-emerald-600 dark:text-emerald-300">Lanjutan</span>
+                    <span
+                        class="text-amber-600 dark:text-brand-gold text-xs sm:text-sm font-bold flex items-center">Akses
+                        Kelas <i class="fa-solid fa-arrow-right ml-1 sm:ml-2 opacity-70 arrow-icon"></i></span>
+                </div>
+            </a>
+
+            <!-- Card 10: IoT & Mikrokontroler -->
+            <a href="/Laksanadigital/Edukasi/iot-mikrokontroler/index.html"
+                class="materi-card group block glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden"
+                data-category="iot" data-title="internet of things iot mikrokontroler arduino raspberry pi smart home">
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-slate-400/10 rounded-full blur-3xl -mr-10 -mt-10 group-hover:bg-brand-gold/20 transition-colors">
+                </div>
+                <div
+                    class="icon-box w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl mb-4 sm:mb-5 text-slate-600 dark:text-slate-300">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+                <h3
+                    class="text-lg sm:text-xl font-bold text-slate-800 dark:text-white mb-1 sm:mb-2 group-hover:text-amber-500 dark:group-hover:text-brand-gold transition-colors block">
+                    IoT & Hardware</h3>
+                <p class="text-slate-500 dark:text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 line-clamp-2">Implementasi
+                    hardware pintar dengan Arduino, Raspberry Pi, untuk solusi Smart System inovatif.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <span
+                        class="badge-base text-[10px] sm:text-[11px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-lg text-slate-600 dark:text-slate-300">Lanjutan</span>
+                    <span
+                        class="text-amber-600 dark:text-brand-gold text-xs sm:text-sm font-bold flex items-center">Akses
+                        Kelas <i class="fa-solid fa-arrow-right ml-1 sm:ml-2 opacity-70 arrow-icon"></i></span>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- No Results -->
+        <div id="noResult"
+            class="hidden text-center py-16 sm:py-20 px-4 sm:px-6 glass-card rounded-2xl mt-4 sm:mt-6 border-dashed">
+            <div
+                class="w-16 h-16 sm:w-20 sm:h-20 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-inner border border-slate-200 dark:border-slate-700">
+                <i class="fa-solid fa-search text-2xl sm:text-3xl text-slate-400 dark:text-gray-400"></i>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-slate-800 dark:text-white mb-2 sm:mb-3">Materi Tidak Ditemukan
+            </h3>
+            <p class="text-slate-500 dark:text-gray-400 max-w-md mx-auto mb-6 sm:mb-8 text-sm sm:text-base">Maaf, kami
+                tidak dapat menemukan materi terkait kata kunci. Silakan coba kata alternatif lain.</p>
+            <button onclick="document.getElementById('searchInput').value=''; filterMateri();"
+                class="px-6 sm:px-8 py-2.5 sm:py-3 bg-brand-gold hover:bg-yellow-500 text-black font-bold rounded-xl shadow-lg shadow-brand-gold/20 transition-all hover:-translate-y-1 text-sm sm:text-base">
+                Kembali & Reset Filter
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Desktop Footer (Hidden on mobile phones) -->
+    <footer
+        class="hidden md:block mt-10 border-t border-slate-200 dark:border-white/5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg relative z-10 pb-8">
+        <div class="max-w-7xl mx-auto px-4 pt-8 pb-4 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-gold to-yellow-600 flex items-center justify-center text-black text-xs font-bold shadow-md">
+                    L.</div>
+                <p class="text-slate-500 dark:text-gray-400 text-sm">© <span id="year">2026</span> PT Laksana Digital
+                    Industri. Platform Edukasi Terbuka.</p>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <a href="mailto:admin@laksanadigital.com"
+                    class="text-slate-500 dark:text-gray-400 hover:text-amber-500 dark:hover:text-brand-gold transition-colors text-sm flex items-center gap-2 group">
+                    <i class="fa-solid fa-envelope group-hover:-translate-y-1 transition-transform"></i> Bantuan
+                </a>
+                <a href="#"
+                    class="text-slate-500 dark:text-gray-400 hover:text-amber-500 dark:hover:text-brand-gold transition-colors text-sm flex items-center gap-2 group">
+                    <i class="fa-brands fa-whatsapp group-hover:-translate-y-1 transition-transform"></i> Whatsapp
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile App Bottom Navigation (Visible only on mobile devices) -->
+    <div class="md:hidden fixed bottom-0 w-full mobile-nav z-50 transition-all duration-300">
+        <div class="flex justify-around items-center pt-3 pb-4 sm:pb-3 px-2">
+            <a href="#" class="flex flex-col items-center gap-1.5 mobile-nav-item active w-1/4">
+                <i class="fa-solid fa-compass text-xl"></i>
+                <span class="text-[10px] font-semibold">Eksplor</span>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1.5 mobile-nav-item w-1/4"
+                onclick="document.getElementById('searchInput').focus(); return false;">
+                <i class="fa-solid fa-search text-xl"></i>
+                <span class="text-[10px] font-medium">Cari</span>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1.5 mobile-nav-item w-1/4 relative group">
+                <div
+                    class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white dark:border-slate-900 group-hover:scale-110 transition-transform">
+                </div>
+                <i class="fa-solid fa-bookmark text-xl"></i>
+                <span class="text-[10px] font-medium">Tersimpan</span>
+            </a>
+            <a href="#" class="flex flex-col items-center gap-1.5 mobile-nav-item w-1/4">
+                <i class="fa-solid fa-user text-xl"></i>
+                <span class="text-[10px] font-medium">Profil</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Script Utama -->
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
